@@ -3,7 +3,7 @@ import axios from "axios";
 
 export async function GET() {
     try {
-        const weather = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid=${process.env.WEATHER_KEY}`)
+        const weather = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&units=metric&appid=${process.env.WEATHER_KEY}`)
         console.log( NextResponse.json({status:200, data: weather.data}))
         return NextResponse.json({status:200, data: weather.data})
     } catch (error) {

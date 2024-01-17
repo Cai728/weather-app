@@ -4,7 +4,6 @@ import { GET } from "../app/api/weather/route";
 export class ApiClient {
     
     responseStatusCheck(responseObject) {
-        console.log(responseObject)
         if (responseObject.status >= 200 && responseObject.status < 300) {
         return Promise.resolve(responseObject)
         } else {
@@ -19,7 +18,7 @@ export class ApiClient {
 
     async checkWorking() {
         const data = await this.getFiveDayForecast("London")
-        console.log(data)
+        // console.log(data)
     }
 
     async getWeather(city) {
@@ -51,7 +50,6 @@ export class ApiClient {
                 }
                 // Add the forecast entry to the array for that date
                 dailyForecasts[date].push(entry);
-                console.log(dailyForecasts)
             }
             return dailyForecasts;
         } catch (error) {
