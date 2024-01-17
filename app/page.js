@@ -48,8 +48,7 @@ export default function Home() {
         <div>
         </div>
         
-      <button onClick={()=>apiClient.checkWorking()}>Click me</button>
-        
+      <button onClick={()=>apiClient.checkWorking("London")}>Click me</button>
 
         {/* Search */}
     <div className='relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 z-10'>
