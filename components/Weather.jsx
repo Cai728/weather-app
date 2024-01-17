@@ -1,18 +1,37 @@
 import { useState, useEffect } from 'react'
 import Image from "next/image"
 
-const Weather = ({data, day}) => {
+const Weather = ({data, date}) => {
+  // Your date in YYYY-MM-DD format
+  var dateString = date;
 
-  useEffect(() => {
-    console.log(data)
-  }
-  , [data])
+  // Split the date string into year, month, and day components
+  var dateComponents = dateString.split('-');
+  var year = parseInt(dateComponents[0]);
+  var month = parseInt(dateComponents[1]) - 1; // Months in JavaScript are 0-indexed
+  var day = parseInt(dateComponents[2]);
 
-    //data[0][0].main.temp
+  // Create a new Date object using the components
+  var convertedDate = new Date(year, month, day);
+  const printDate = day + "/" + (month+1) + "/" + year
+
+  // Now you can use the Date object methods, such as getDay()
+  var dayOfWeek = convertedDate.getDay();
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const currentDayOfWeek = daysOfWeek[dayOfWeek];
+  console.log('Day of the week:', currentDayOfWeek); // 1 (for Monday) in this example
+
+  // useEffect(() => {
+  //   console.log(data)
+  //   console.log("date:", date)
+  // }, [data])
+
   return (
     <div className="flex justify-center items-start h-screen mt-24">
-      <div className="w-64 h-64 border-2 border-gray-300 rounded-lg text-center bg-gray-100 bg-opacity-70">
-        <div className="mb-4 flex flex-col items-center">
+      <div className="w-64 border-2 border-gray-300 rounded-lg text-center bg-gray-100 bg-opacity-70">
+        <div className="flex flex-col items-center">
+          <h1>{currentDayOfWeek}</h1>
+          <p>{printDate}</p>
             <Image src={`http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`} alt="weather description"
                 width="100" height="100"/>
           <span className="block text-lg font-bold">Min: {
