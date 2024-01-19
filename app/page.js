@@ -60,14 +60,14 @@ export default function Home() {
               placeholder='Search City'
             />
           </div>
-          <button type="submit">Search</button>
+          <button type="submit" className="text-white"> Search</button>
         </form>
       </div>
 
 
       {
         weather && weather.map((
-          day, 
+          day,
           index
         ) => {
           return <Weather

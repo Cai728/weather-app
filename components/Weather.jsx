@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from "next/image"
 
-const Weather = ({data, date}) => {
+const Weather = ({ data, date }) => {
   // Your date in YYYY-MM-DD format
   var dateString = date;
 
@@ -13,7 +13,7 @@ const Weather = ({data, date}) => {
 
   // Create a new Date object using the components
   var convertedDate = new Date(year, month, day);
-  const printDate = day + "/" + (month+1) + "/" + year
+  const printDate = day + "/" + (month + 1) + "/" + year
 
   // Now you can use the Date object methods, such as getDay()
   var dayOfWeek = convertedDate.getDay();
@@ -27,16 +27,16 @@ const Weather = ({data, date}) => {
   // }, [data])
 
   return (
-    <div className="flex justify-center items-start h-screen mt-24">
+    <div className="flex justify-center items-start mt-12 mb-8 flex-row">
       <div className="w-64 border-2 border-gray-300 rounded-lg text-center bg-gray-100 bg-opacity-70">
         <div className="flex flex-col items-center">
           <h1>{currentDayOfWeek}</h1>
           <p>{printDate}</p>
-            <Image src={`http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`} alt="weather description"
-                width="100" height="100"/>
+          <Image src={`http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png`} alt="weather description"
+            width="100" height="100" />
           <span className="block text-lg font-bold">Min: {
             data ? data[0].main.temp_min : null
-          
+
           } °C</span>
           <span className="block text-lg font-bold">Max: {data ? data[0].main.temp_max : null} °C</span>
         </div>
