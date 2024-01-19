@@ -4,7 +4,6 @@
 
 body {
     background-image: url('https://images.pexels.com/photos/803001/pexels-photo-803001.jpeg?auto=compress&cs=tinysrgb&w=800');
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
 
 }
